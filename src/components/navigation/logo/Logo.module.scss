@@ -1,0 +1,16 @@
+@import 'common';
+
+.wrapper {
+    height: 40px;
+    cursor: pointer;
+
+    & svg {
+        height: 100%;
+    }
+}
+
+.light {
+    & svg path {
+        fill: $light;
+    }
+}

@@ -1,0 +1,50 @@
+@import 'common';
+
+@mixin mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    width: 100%;
+    padding: $mobile-padding;
+}
+
+.wrapper {
+    @include mobile();
+
+    & .menu {
+        position: fixed;
+        inset: 0;
+        background-color: $dark;
+        transform: translateX(100%);
+        transition: 0.4s;
+
+        & .innerWrapper {
+            @include mobile();
+        }
+
+        & .list {
+            @include flex-column();
+            gap: 20px;
+            padding: 0 $mobile-extra-padding;
+            margin-top: 20px;
+            color: $light;
+        }
+    }
+
+    & .mobile {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+}
+
+.open {
+    & .menu {
+        position: fixed;
+        inset: 0;
+        background-color: $dark;
+        transform: translateX(0%);
+    }
+}

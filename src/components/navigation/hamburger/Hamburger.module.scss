@@ -1,0 +1,29 @@
+@import 'common';
+
+.wrapper {
+    @include flex-column();
+    justify-content: space-between;
+    height: 28px;
+    width: 40px;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+
+    & div {
+        height: 4px;
+        width: 100%;
+        background-color: $dark;
+        border-radius: 2px;
+        transition: 0.5s;
+
+        &:nth-child(2) {
+            transform: translateX(15%);
+        }
+    }
+}
+
+.light {
+    & div {
+        background-color: $light;
+    }
+}
