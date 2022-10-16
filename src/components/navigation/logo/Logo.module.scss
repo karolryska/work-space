@@ -1,0 +1,35 @@
+@import 'common';
+
+.wrapper {
+    height: 40px;
+    width: 88px;
+    transform: translateX(-4px);
+    cursor: pointer;
+
+    & svg {
+        height: 100%;
+        width: 100%;
+    }
+
+    & .top,
+    & .bottom {
+        transition: 0.2s;
+    }
+
+    @include mq(md) {
+        &:hover {
+            & .top {
+                transform: translateX(-4px);
+            }
+            & .bottom {
+                transform: translateX(4px);
+            }
+        }
+    }
+}
+
+.light {
+    & svg path {
+        fill: $light;
+    }
+}
