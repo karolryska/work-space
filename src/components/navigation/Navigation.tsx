@@ -28,8 +28,12 @@ const Navigation = ({ color }: Props) => {
                     <Hamburger color="light" handleClick={toggleMenu} />
                 </div>
                 <ul className={cn('list')}>
-                    <Link href="/oferta">Oferta</Link>
-                    <Link href="/kontakt">Kontakt</Link>
+                    <Link href="/oferta" color={color}>
+                        Oferta
+                    </Link>
+                    <Link href="/kontakt" color={color}>
+                        Kontakt
+                    </Link>
                 </ul>
             </div>
         </nav>

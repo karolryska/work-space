@@ -12,6 +12,14 @@
 .wrapper {
     @include mobile();
 
+    @include mq(md) {
+        display: flex;
+        align-items: center;
+        height: 100px;
+        width: 100%;
+        padding: 0 calc((100vw - $desktop-content-width) / 2);
+    }
+
     & .menu {
         position: fixed;
         inset: 0;
@@ -19,8 +27,18 @@
         transform: translateX(100%);
         transition: 0.4s;
 
+        @include mq(md) {
+            position: static;
+            background-color: transparent;
+            transform: translateX(0);
+        }
+
         & .innerWrapper {
             @include mobile();
+
+            @include mq(md) {
+                display: none;
+            }
         }
 
         & .list {
@@ -29,6 +47,13 @@
             padding: 0 $mobile-extra-padding;
             margin-top: 20px;
             color: $light;
+
+            @include mq(md) {
+                flex-direction: row;
+                gap: 60px;
+                margin-top: 0;
+                transform: translateY(50%);
+            }
         }
     }
 
@@ -37,6 +62,12 @@
         justify-content: space-between;
         align-items: center;
         width: 100%;
+
+        @include mq(md) {
+            & button {
+                display: none;
+            }
+        }
     }
 }
 
