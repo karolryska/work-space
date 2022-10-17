@@ -1,0 +1,38 @@
+@import 'common';
+
+.wrapper {
+    @include flex-column();
+    gap: 6px;
+    padding: 0 $mobile-padding;
+    color: $dark;
+
+    & .title {
+        font-size: 28px;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    & .body {
+        @include flex-column();
+        align-items: flex-start;
+        gap: 16px;
+        padding: 0 $mobile-extra-padding;
+        font-size: 14px;
+        line-height: 22px;
+        letter-spacing: 1px;
+
+        & a {
+            color: $dark;
+            position: relative;
+
+            &::before {
+                content: '';
+                position: absolute;
+                bottom: 3px;
+                left: 0;
+                right: 0;
+                height: 1px;
+                background-color: $dark;
+            }
+        }
+    }
+}
