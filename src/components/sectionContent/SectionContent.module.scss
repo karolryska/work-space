@@ -2,14 +2,22 @@
 
 .wrapper {
     @include flex-column();
-    gap: 6px;
+    gap: 8px;
     padding: 0 $mobile-padding;
     color: $dark;
 
     @include mq(md) {
-        gap: 10px;
-        width: 30vw;
+        width: 45vw;
         padding: 0 0 0 $mobile-padding;
+    }
+
+    @include mq(xl) {
+        gap: 10px;
+        width: 35vw;
+    }
+
+    @include mq(2xl) {
+        width: 32vw;
     }
 
     & .title {
@@ -25,7 +33,7 @@
         @include flex-column();
         @include body();
         align-items: flex-start;
-        gap: 16px;
+        gap: 14px;
         padding: 0 $mobile-extra-padding;
 
         @include mq(md) {
