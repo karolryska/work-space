@@ -6,33 +6,30 @@
     padding: 0 $mobile-padding;
     color: $dark;
 
+    @include mq(md) {
+        gap: 10px;
+        width: 30vw;
+        padding: 0 0 0 $mobile-padding;
+    }
+
     & .title {
         font-size: 28px;
         font-family: 'Open Sans', sans-serif;
+
+        @include mq(md) {
+            font-size: 40px;
+        }
     }
 
     & .body {
         @include flex-column();
+        @include body();
         align-items: flex-start;
         gap: 16px;
         padding: 0 $mobile-extra-padding;
-        font-size: 14px;
-        line-height: 22px;
-        letter-spacing: 1px;
 
-        & a {
-            color: $dark;
-            position: relative;
-
-            &::before {
-                content: '';
-                position: absolute;
-                bottom: 3px;
-                left: 0;
-                right: 0;
-                height: 1px;
-                background-color: $dark;
-            }
+        @include mq(md) {
+            gap: 20px;
         }
     }
 }

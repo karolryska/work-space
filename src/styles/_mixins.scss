@@ -30,4 +30,11 @@ $media: (
 
 @mixin body {
     font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 1px;
+
+    @include mq(md) {
+        gap: 20px;
+        line-height: 26px;
+    }
 }
