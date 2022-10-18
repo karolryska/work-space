@@ -1,0 +1,38 @@
+@import 'common';
+
+.wrapper {
+    @include flex-column();
+    width: 100%;
+    gap: 25px;
+    padding: 20px 0;
+
+    @include mq(md) {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 40px 0 40px calc((100vw - $desktop-content-width) / 2);
+    }
+
+    .image {
+        overflow: hidden;
+        position: relative;
+        height: 60vw;
+        margin: 0 $mobile-padding;
+
+        @include mq(md) {
+            flex: 0 0 50vw;
+            height: 50vw;
+            height: 35vw;
+            flex-shrink: 0;
+            margin: 0;
+        }
+    }
+}
+
+.reverse {
+    @include mq(md) {
+        flex-direction: row-reverse;
+        padding: 100px calc((100vw - $desktop-content-width) / 2) 100px 0;
+    }
+}
