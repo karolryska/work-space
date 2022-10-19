@@ -4,26 +4,28 @@
     @include flex-column();
     width: 100%;
     gap: 25px;
-    padding: 20px 0;
+    padding: 0 $mobile-padding;
 
-    @include mq(md) {
+    @include mq(lg) {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        width: 100%;
-        padding: 40px 0 40px calc((100vw - $desktop-content-width) / 2);
+    }
+
+    @each $name, $big-padding, $small-padding in $section {
+        @include mq($name) {
+            padding: 40px $small-padding 40px $big-padding;
+        }
     }
 
     .image {
         overflow: hidden;
         position: relative;
-        height: 60vw;
-        margin: 0 $mobile-padding;
+        height: calc((100vw - $mobile-padding) * 0.66);
 
-        @include mq(md) {
+        @include mq(lg) {
             flex: 0 0 50vw;
-            height: 50vw;
-            height: 35vw;
+            height: calc(50vw * 0.66);
             flex-shrink: 0;
             margin: 0;
         }
@@ -33,6 +35,11 @@
 .reverse {
     @include mq(md) {
         flex-direction: row-reverse;
-        padding: 100px calc((100vw - $desktop-content-width) / 2) 100px 0;
+
+        @each $name, $big-padding, $small-padding, $content, $image in $section {
+            @include mq($name) {
+                padding: 40px $big-padding 40px $small-padding;
+            }
+        }
     }
 }

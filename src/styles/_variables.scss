@@ -1,6 +1,16 @@
 $light: #e1dcd7;
 $dark: #343434;
 
-$mobile-padding: 20px;
-$mobile-extra-padding: 42px;
-$desktop-content-width: 1400px;
+$media: (
+    sm: 640px,
+    md: 768px,
+    lg: 1024px,
+    xl: 1280px,
+    xxl: 1536px,
+    xxxl: 2000px,
+);
+
+$mobile-padding: 5vw;
+$mobile-extra-padding: 22px;
+
+$section: 'lg' 5vw 5vw 40vw 50vw, 'xl' 15vw 0 30vw 50vw, 'xxl' 15vw 5vw 25vw 50vw;

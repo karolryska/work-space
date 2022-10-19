@@ -3,21 +3,12 @@
 .wrapper {
     @include flex-column();
     gap: 8px;
-    padding: 0 $mobile-padding;
     color: $dark;
 
-    @include mq(md) {
-        width: 45vw;
-        padding: 0 0 0 $mobile-padding;
-    }
-
-    @include mq(xl) {
-        gap: 10px;
-        width: 35vw;
-    }
-
-    @include mq(2xl) {
-        width: 32vw;
+    @each $name, $big-padding, $small-padding, $content in $section {
+        @include mq($name) {
+            width: $content;
+        }
     }
 
     & .title {
@@ -34,7 +25,7 @@
         @include body();
         align-items: flex-start;
         gap: 14px;
-        padding: 0 $mobile-extra-padding;
+        padding-left: $mobile-extra-padding;
 
         @include mq(md) {
             gap: 20px;
