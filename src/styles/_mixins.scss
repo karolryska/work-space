@@ -22,12 +22,17 @@
 }
 
 @mixin body {
-    font-size: 14px;
-    line-height: 21px;
+    font-size: 13px;
+    line-height: 20px;
     letter-spacing: 1px;
 
     @include mq(md) {
-        gap: 20px;
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    @include mq(xl) {
+        font-size: 15px;
         line-height: 26px;
     }
 }
