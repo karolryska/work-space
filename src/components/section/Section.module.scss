@@ -4,7 +4,7 @@
     @include flex-column();
     width: 100%;
     gap: 25px;
-    padding: 0 $mobile-padding;
+    padding: 2vw $mobile-padding;
 
     @include mq(lg) {
         flex-direction: row;
@@ -14,7 +14,9 @@
 
     @each $name, $big-padding, $small-padding in $section {
         @include mq($name) {
-            padding: 40px $small-padding 40px $big-padding;
+            padding: 5vw 0;
+            padding-left: $big-padding;
+            padding-right: $small-padding;
         }
     }
 
@@ -22,6 +24,8 @@
         overflow: hidden;
         position: relative;
         height: calc((100vw - $mobile-padding) * 0.66);
+        width: 100%;
+        box-shadow: $image-shadow;
 
         @include mq(lg) {
             flex: 0 0 50vw;
@@ -33,12 +37,13 @@
 }
 
 .reverse {
-    @include mq(md) {
+    @include mq(lg) {
         flex-direction: row-reverse;
 
         @each $name, $big-padding, $small-padding, $content, $image in $section {
             @include mq($name) {
-                padding: 40px $big-padding 40px $small-padding;
+                padding-left: $small-padding;
+                padding-right: $big-padding;
             }
         }
     }
