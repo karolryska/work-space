@@ -18,7 +18,7 @@ const Section = ({ title, body, image, reverse }: Props) => {
         <section className={cn('wrapper', { reverse })}>
             <SectionContent title={title} body={body} />
             <div className={cn('image')}>
-                <Image src={image} layout="fill" />
+                <Image src={image} layout="fill" objectFit="cover" />
             </div>
         </section>
     );
