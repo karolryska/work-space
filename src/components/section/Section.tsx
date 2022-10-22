@@ -7,19 +7,25 @@ import styles from './Section.module.scss';
 const cn = classNames.bind(styles);
 
 interface Props {
+    variant: 'row' | 'row-reverse' | 'column';
     title: string;
     body: React.ReactNode;
     image: StaticImageData;
-    reverse?: boolean;
+    additionalImage?: StaticImageData;
 }
 
-const Section = ({ title, body, image, reverse }: Props) => {
+const Section = ({ variant, title, body, image, additionalImage }: Props) => {
     return (
-        <section className={cn('wrapper', { reverse })}>
+        <section className={cn('wrapper', variant, { row: variant.includes('row') })}>
             <SectionContent title={title} body={body} />
             <div className={cn('image')}>
                 <Image src={image} layout="fill" objectFit="cover" />
             </div>
+            {variant === 'column' && additionalImage && (
+                <div className={cn('additional-image')}>
+                    <Image src={additionalImage} layout="fill" objectFit="cover" />
+                </div>
+            )}
         </section>
     );
 };
