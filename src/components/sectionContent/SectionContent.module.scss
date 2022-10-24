@@ -18,6 +18,14 @@
         @include mq(md) {
             font-size: 40px;
         }
+
+        @include mq(lg) {
+            font-size: 50px;
+        }
+
+        @include mq(xl) {
+            font-size: 60px;
+        }
     }
 
     & .body {
@@ -27,7 +35,7 @@
         gap: 14px;
         padding-left: $mobile-extra-padding;
 
-        @include mq(md) {
+        @include mq(xl) {
             gap: 20px;
         }
     }
