@@ -1,11 +1,4 @@
-$media: (
-    sm: 640px,
-    md: 768px,
-    lg: 1024px,
-    xl: 1280px,
-    2xl: 1536px,
-    3xl: 1920px,
-);
+@import '_variables';
 
 @mixin mq($breakpoint) {
     @each $name, $size in $media {
@@ -29,5 +22,17 @@ $media: (
 }
 
 @mixin body {
-    font-size: 14px;
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: 1px;
+
+    @include mq(md) {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    @include mq(xl) {
+        font-size: 15px;
+        line-height: 26px;
+    }
 }

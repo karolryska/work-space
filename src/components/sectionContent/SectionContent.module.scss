@@ -1,0 +1,42 @@
+@import 'common';
+
+.wrapper {
+    @include flex-column();
+    gap: 8px;
+    color: $dark;
+
+    @each $name, $big-padding, $small-padding, $content in $section {
+        @include mq($name) {
+            width: $content;
+        }
+    }
+
+    & .title {
+        font-size: 28px;
+        font-family: 'Open Sans', sans-serif;
+
+        @include mq(md) {
+            font-size: 40px;
+        }
+
+        @include mq(lg) {
+            font-size: 50px;
+        }
+
+        @include mq(xl) {
+            font-size: 60px;
+        }
+    }
+
+    & .body {
+        @include flex-column();
+        @include body();
+        align-items: flex-start;
+        gap: 14px;
+        padding-left: $mobile-extra-padding;
+
+        @include mq(xl) {
+            gap: 20px;
+        }
+    }
+}

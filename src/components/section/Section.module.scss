@@ -1,0 +1,100 @@
+@import 'common';
+
+.wrapper {
+    @include flex-column();
+    width: 100%;
+    gap: 25px;
+    padding: 2vw $mobile-padding;
+}
+
+.row {
+    .image {
+        overflow: hidden;
+        position: relative;
+        height: calc((100vw - $mobile-padding) * 0.66);
+        width: 100%;
+        box-shadow: $image-shadow;
+
+        @include mq(lg) {
+            flex: 0 0 50vw;
+            height: calc(50vw * 0.66);
+            flex-shrink: 0;
+            margin: 0;
+        }
+    }
+
+    @include mq(lg) {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    @each $name, $big-padding, $small-padding in $section {
+        @include mq($name) {
+            padding: 5vw 0;
+            padding-left: $big-padding;
+            padding-right: $small-padding;
+        }
+    }
+}
+
+.row-reverse {
+    @include mq(lg) {
+        flex-direction: row-reverse;
+
+        @each $name, $big-padding, $small-padding, $content, $image in $section {
+            @include mq($name) {
+                padding-left: $small-padding;
+                padding-right: $big-padding;
+            }
+        }
+    }
+}
+
+.column {
+    position: relative;
+
+    @include mq(lg) {
+        flex-direction: column;
+        gap: 3vw;
+    }
+
+    @each $name, $big-padding, $small-padding in $section {
+        @include mq($name) {
+            padding: 100px $big-padding 100px $big-padding;
+        }
+    }
+
+    & .image {
+        position: relative;
+        height: calc((100vw - $mobile-padding) * 0.66);
+        width: 100%;
+        transform: translateX(-30%);
+        box-shadow: $image-shadow;
+
+        @include mq(lg) {
+            width: 50vw;
+            height: calc(50vw * 0.66);
+            transform: translateX(6%);
+        }
+    }
+
+    & .additional-image {
+        position: relative;
+        align-self: flex-end;
+        height: 60vw;
+        width: calc(60vw * 0.66);
+        margin-top: -50%;
+        box-shadow: $image-shadow;
+
+        @include mq(lg) {
+            position: absolute;
+            top: 15%;
+            right: 15vw;
+            height: 30vw;
+            width: calc(30vw * 0.66);
+            margin-top: 0;
+            transform: translate(-6%, 5%);
+        }
+    }
+}
