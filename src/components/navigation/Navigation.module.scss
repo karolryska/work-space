@@ -1,26 +1,68 @@
 @import 'common';
-
-@mixin mobile {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 80px;
-    width: 100%;
-    padding: $mobile-padding;
-}
-
 .wrapper {
-    @include mobile();
+    z-index: 100;
+    position: relative;
+    width: 100%;
+    margin-bottom: 100px;
 
     @include mq(md) {
         display: flex;
         align-items: center;
-        height: 100px;
+        justify-content: space-between;
+        height: 120px;
         width: 100%;
-        padding: 0 calc((100vw - $desktop-content-width) / 2);
+        padding: $mobile-padding;
+        margin-bottom: 0;
     }
 
-    & .menu {
+    @include mq(lg) {
+        padding: 0;
+    }
+
+    @each $name, $big-padding in $section {
+        @include mq($name) {
+            width: calc(100vw - $big-padding - $big-padding);
+        }
+    }
+
+    & .inner-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 $mobile-padding;
+
+        @include mq(md) {
+            position: static;
+            padding: 0;
+
+            & button {
+                display: none;
+            }
+        }
+    }
+
+    & .mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 0 $mobile-padding;
+        clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%); //hide
+        transition: 0.4s;
+        z-index: 100;
+    }
+
+    & .links {
         position: fixed;
         inset: 0;
         background-color: $dark;
@@ -33,18 +75,10 @@
             transform: translateX(0);
         }
 
-        & .innerWrapper {
-            @include mobile();
-
-            @include mq(md) {
-                display: none;
-            }
-        }
-
         & .list {
             @include flex-column();
             gap: 20px;
-            padding: 0 $mobile-extra-padding;
+            padding: 100px $mobile-extra-padding 0;
             margin-top: 20px;
             color: $light;
 
@@ -52,27 +86,18 @@
                 flex-direction: row;
                 gap: 60px;
                 margin-top: 0;
-                transform: translateY(50%);
-            }
-        }
-    }
-
-    & .mobile {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-
-        @include mq(md) {
-            & button {
-                display: none;
+                padding: 0;
             }
         }
     }
 }
 
 .open {
-    & .menu {
+    & .mask {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); //full
+    }
+
+    & .links {
         position: fixed;
         inset: 0;
         background-color: $dark;
