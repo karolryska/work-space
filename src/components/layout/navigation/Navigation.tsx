@@ -18,15 +18,21 @@ const Navigation = ({ color }: Props) => {
 
     return (
         <nav className={cn('wrapper', { open: isOpen })}>
-            <div className={cn('mobile')}>
+            <div className={cn('inner-wrapper')}>
                 <Logo color={color} />
-                <Hamburger color={color} handleClick={toggleMenu} />
+                <Hamburger color={color} handleClick={toggleMenu} isOpen={isOpen} />
             </div>
-            <div className={cn('menu')}>
-                <div className={cn('innerWrapper')}>
+            {color === 'dark' && (
+                <div className={cn('mask')} aria-hidden="true">
+                    <Logo color="light" />
+                    <Hamburger color="light" handleClick={toggleMenu} isOpen={isOpen} />
+                </div>
+            )}
+            <div className={cn('links')}>
+                {/* <div className={cn('innerWrapper')}>
                     <Logo color="light" />
                     <Hamburger color="light" handleClick={toggleMenu} />
-                </div>
+                </div> */}
                 <ul className={cn('list')}>
                     <Link href="/oferta" color={color}>
                         Oferta

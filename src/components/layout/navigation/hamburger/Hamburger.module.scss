@@ -14,10 +14,10 @@
         width: 100%;
         background-color: $dark;
         border-radius: 2px;
-        transition: 0.5s;
+        transition: 0.4s;
 
         &:nth-child(2) {
-            transform: translateX(15%);
+            transform: translateX(-15%);
         }
     }
 }
@@ -25,5 +25,13 @@
 .light {
     & div {
         background-color: $light;
+    }
+}
+
+.open {
+    & div {
+        &:nth-child(2) {
+            transform: translateX(15%);
+        }
     }
 }
