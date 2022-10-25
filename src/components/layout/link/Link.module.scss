@@ -1,0 +1,10 @@
+@import 'common';
+
+.wrapper {
+    font-weight: 400;
+    font-size: 12px;
+
+    & a {
+        color: $light;
+    }
+}

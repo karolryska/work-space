@@ -1,0 +1,57 @@
+@import 'common';
+
+.wrapper {
+    @include flex-column();
+    align-items: center;
+    width: 100%;
+
+    & .content {
+        width: 100%;
+    }
+
+    & .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-top: 6vw;
+        padding: 30px $mobile-padding;
+        background-color: $dark;
+
+        @include mq(md) {
+            margin-top: 4vw;
+        }
+
+        @each $name, $big-padding, $small-padding in $section {
+            @include mq($name) {
+                padding: 30px $big-padding;
+            }
+        }
+
+        & .logo {
+            height: 30px;
+
+            & svg {
+                height: 100%;
+
+                & path {
+                    fill: $light;
+                }
+            }
+
+            @include mq(md) {
+                height: 40px;
+            }
+        }
+
+        & .links {
+            @include flex-column();
+            gap: 6px;
+
+            @include mq(md) {
+                flex-direction: row;
+                gap: 2vw;
+            }
+        }
+    }
+}
