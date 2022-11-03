@@ -1,3 +1,4 @@
+import { DeviceSizeContextProvider } from 'context/DeviceSizeContext';
 import Layout from 'components/layout/Layout';
 import type { AppProps } from 'next/app';
 import { Color } from 'types/types';
@@ -13,9 +14,11 @@ interface CustomAppProps extends AppProps {
 
 function MyApp({ Component, pageProps }: CustomAppProps) {
     return (
-        <Layout color={pageProps.color}>
-            <Component {...pageProps} />
-        </Layout>
+        <DeviceSizeContextProvider>
+            <Layout color={pageProps.color}>
+                <Component {...pageProps} />
+            </Layout>
+        </DeviceSizeContextProvider>
     );
 }
 
