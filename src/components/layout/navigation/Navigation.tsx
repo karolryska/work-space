@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import classNames from 'classnames/bind';
+import { useDeviceSize } from 'context/DeviceSizeContext';
 import { Color } from 'types/types';
 import Logo from './logo/Logo';
 import Hamburger from './hamburger/Hamburger';
@@ -13,6 +14,8 @@ interface Props {
 }
 
 const Navigation = ({ color }: Props) => {
+    const { isMobile } = useDeviceSize();
+
     const [isOpen, setIsOpen] = useState(false);
     const toggleMenu = () => setIsOpen((prevState) => !prevState);
 
@@ -22,7 +25,7 @@ const Navigation = ({ color }: Props) => {
                 <Logo color={color} />
                 <Hamburger color={color} handleClick={toggleMenu} isOpen={isOpen} />
             </div>
-            {color === 'dark' && (
+            {isMobile && (
                 <div className={cn('mask')} aria-hidden="true">
                     <Logo color="light" />
                     <Hamburger color="light" handleClick={toggleMenu} isOpen={isOpen} />
