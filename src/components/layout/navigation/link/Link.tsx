@@ -14,7 +14,9 @@ interface Props {
 const Link = ({ children, href, color }: Props) => {
     return (
         <li className={cn('wrapper', color)}>
-            <NextLink href={href}>{children}</NextLink>
+            <NextLink href={href} passHref>
+                <a>{children}</a>
+            </NextLink>
         </li>
     );
 };

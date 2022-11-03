@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 import Link from 'next/link';
 import classNames from 'classnames/bind';
 import { Color } from 'types/types';
@@ -11,8 +12,8 @@ interface Props {
 
 const Logo = ({ color }: Props) => {
     return (
-        <Link href="/">
-            <div className={cn('wrapper', color)}>
+        <Link href="/" passHref>
+            <a className={cn('wrapper', color)}>
                 <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         className={cn('top')}
@@ -60,7 +61,7 @@ const Logo = ({ color }: Props) => {
                         fill="#343434"
                     />
                 </svg>
-            </div>
+            </a>
         </Link>
     );
 };
