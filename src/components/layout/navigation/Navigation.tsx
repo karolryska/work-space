@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import classNames from 'classnames/bind';
 import { useDeviceSize } from 'context/DeviceSizeContext';
 import { Color } from 'types/types';
@@ -14,10 +15,15 @@ interface Props {
 }
 
 const Navigation = ({ color }: Props) => {
+    const router = useRouter();
     const { isMobile } = useDeviceSize();
 
     const [isOpen, setIsOpen] = useState(false);
     const toggleMenu = () => setIsOpen((prevState) => !prevState);
+
+    useEffect(() => {
+        setIsOpen(false);
+    }, [router]);
 
     return (
         <nav className={cn('wrapper', { open: isOpen })}>
