@@ -37,20 +37,14 @@ const Navigation = ({ color }: Props) => {
                     <Hamburger color="light" handleClick={toggleMenu} isOpen={isOpen} />
                 </div>
             )}
-            <div className={cn('links')}>
-                {/* <div className={cn('innerWrapper')}>
-                    <Logo color="light" />
-                    <Hamburger color="light" handleClick={toggleMenu} />
-                </div> */}
-                <ul className={cn('list')}>
-                    <Link href="/oferta" color={color}>
-                        Oferta
-                    </Link>
-                    <Link href="/kontakt" color={color}>
-                        Kontakt
-                    </Link>
-                </ul>
-            </div>
+            <ul className={cn('links')}>
+                <Link href="/oferta" color={color}>
+                    Oferta
+                </Link>
+                <Link href="/kontakt" color={color}>
+                    Kontakt
+                </Link>
+            </ul>
         </nav>
     );
 };
