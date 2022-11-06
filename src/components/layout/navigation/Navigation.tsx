@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import classNames from 'classnames/bind';
+import { useDeviceSize } from 'context/DeviceSizeContext';
 import { Color } from 'types/types';
 import Logo from './logo/Logo';
 import Hamburger from './hamburger/Hamburger';
@@ -13,8 +15,15 @@ interface Props {
 }
 
 const Navigation = ({ color }: Props) => {
+    const router = useRouter();
+    const { isMobile } = useDeviceSize();
+
     const [isOpen, setIsOpen] = useState(false);
     const toggleMenu = () => setIsOpen((prevState) => !prevState);
+
+    useEffect(() => {
+        setIsOpen(false);
+    }, [router]);
 
     return (
         <nav className={cn('wrapper', { open: isOpen })}>
@@ -22,26 +31,20 @@ const Navigation = ({ color }: Props) => {
                 <Logo color={color} />
                 <Hamburger color={color} handleClick={toggleMenu} isOpen={isOpen} />
             </div>
-            {color === 'dark' && (
+            {isMobile && (
                 <div className={cn('mask')} aria-hidden="true">
                     <Logo color="light" />
                     <Hamburger color="light" handleClick={toggleMenu} isOpen={isOpen} />
                 </div>
             )}
-            <div className={cn('links')}>
-                {/* <div className={cn('innerWrapper')}>
-                    <Logo color="light" />
-                    <Hamburger color="light" handleClick={toggleMenu} />
-                </div> */}
-                <ul className={cn('list')}>
-                    <Link href="/oferta" color={color}>
-                        Oferta
-                    </Link>
-                    <Link href="/kontakt" color={color}>
-                        Kontakt
-                    </Link>
-                </ul>
-            </div>
+            <ul className={cn('links')}>
+                <Link href="/oferta" color={color}>
+                    Oferta
+                </Link>
+                <Link href="/kontakt" color={color}>
+                    Kontakt
+                </Link>
+            </ul>
         </nav>
     );
 };
