@@ -9,6 +9,23 @@ import styles from '../styles/pages/index.module.scss';
 const HomePage = () => {
     return (
         <>
+            <section className={styles.hero}>
+                <h1 className={styles.title}>
+                    <span>Przestrzeń,</span>
+                    <span>
+                        <span className={styles.light}>w której </span>
+                        <span>praca</span>
+                    </span>
+                    <span>
+                        <span className={styles.light}>to </span>
+                        <span>przyjemność.</span>
+                    </span>
+                </h1>
+                <p className={styles.body}>
+                    <span>Work Space to przestrzenie zaprojektowane z myślą o komforcie.</span>
+                    <span>Tworzymy miejsca, w których będziesz chciał pracować.</span>
+                </p>
+            </section>
             <Section
                 variant="row-reverse"
                 title="pomysł"
