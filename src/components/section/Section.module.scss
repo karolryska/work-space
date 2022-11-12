@@ -5,6 +5,11 @@
     width: 100%;
     gap: 25px;
     padding: 2vw $mobile-padding;
+    margin-top: 4vw;
+
+    @include mq(md) {
+        margin-top: 0;
+    }
 }
 
 .row {
@@ -61,7 +66,7 @@
 
     @each $name, $big-padding, $small-padding in $section {
         @include mq($name) {
-            padding: 100px $big-padding 100px $big-padding;
+            padding: 5vw $big-padding 100px $big-padding;
         }
     }
 
